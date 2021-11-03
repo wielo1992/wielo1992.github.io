@@ -1,0 +1,16 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-form-field {
+  width: 400px;
+}
+.navigation span {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.search {
+  margin-left: 20px;
+}
+mat-form-field mat-label {
+  font-size: 15px;
+}

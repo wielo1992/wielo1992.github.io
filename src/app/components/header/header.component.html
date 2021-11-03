@@ -1,0 +1,46 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <div class="navigation">
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Search for product</mat-label>
+
+      <form [formGroup]="form">
+        <input matInput type="text" formControlName="search" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </form>
+    </mat-form-field>
+
+    <mat-icon class="search" style="cursor: pointer">search</mat-icon>
+    <span style="cursor: pointer" routerLink="/">Home</span>
+    <span style="cursor: pointer" routerLink="/products/list-products"
+      >Products</span
+    >
+  </div>
+
+  <mat-icon
+    routerLink="/shopping-card"
+    matBadge="{{ totalItem }}"
+    matBadgeColor="warn"
+    style="cursor: pointer; margin-right: 20px"
+  >
+    local_grocery_store</mat-icon
+  >
+
+  <span class="cdk-visually-hidden"> </span>
+</mat-toolbar>

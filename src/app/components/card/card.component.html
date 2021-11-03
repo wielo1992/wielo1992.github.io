@@ -1,0 +1,65 @@
+<hr />
+<ng-container *ngIf="(products | async)?.length">
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products | async; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ product.title }}</td>
+              <td>
+                <img style="width: 120px" src="{{ product.image }}" alt="" />
+              </td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.price }}</td>
+
+              <td>1</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteProduct(product)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button (click)="clearAll()">Clear All Cart</button>
+</ng-container>
+
+<ng-container *ngIf="!(products | async)?.length">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>My Cart</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/287478ba-3b6c-42c9-8a25-6a7ff1851c09"
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-content>
+      <h5>Your cart is empty!</h5>
+      <h6>Add item to it</h6>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button routerLink="/products/list-products">
+        GO BACK TO SHOP
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

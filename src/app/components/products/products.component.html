@@ -1,0 +1,51 @@
+<h3>Categories</h3>
+<div class="card-top container-fluid">
+  <div class="container d-flex">
+    <div class="item">
+      <a>
+        <img
+          src="https://thumbs.dreamstime.com/z/featured-product-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83094439.jpg"
+          alt=""
+        />
+        <h6>All Products</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img
+          src="https://thumbs.dreamstime.com/z/featured-product-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83094439.jpg"
+          alt=""
+        />
+        <h6>Electronics</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img
+          src="https://thumbs.dreamstime.com/z/featured-product-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83094439.jpg"
+          alt=""
+        />
+        <h6>Fashion</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img
+          src="https://thumbs.dreamstime.com/z/featured-product-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83094439.jpg"
+          alt=""
+        />
+        <h6>Jewellry</h6>
+      </a>
+    </div>
+  </div>
+</div>
+<form [formGroup]="form">
+  <mat-radio-group aria-label="Select an option" formControlName="category">
+    <mat-radio-button value="allCategories">All categories</mat-radio-button>
+    <mat-radio-button value="electronics">Electronics</mat-radio-button>
+    <mat-radio-button value="fashion">Fashion</mat-radio-button>
+    <mat-radio-button value="jevelry">Jevelry</mat-radio-button>
+  </mat-radio-group>
+</form>
+<hr />
+<router-outlet></router-outlet>

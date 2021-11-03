@@ -1,0 +1,8 @@
+.example-card {
+  max-width: 500px;
+  margin: auto;
+  width: 50%;
+}
+mat-card-content {
+  text-align: center;
+}
