@@ -19,7 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListProductsComponent } from './components/products/list-products/list-products.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SingleProductComponent } from './components/products/single-product/single-product.component';
-import { FilterPipe } from './shared/filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,6 @@ import { FilterPipe } from './shared/filter.pipe';
     CardComponent,
     SingleProductComponent,
     ListProductsComponent,
-    FilterPipe,
   ],
   imports: [
     MatRadioModule,
