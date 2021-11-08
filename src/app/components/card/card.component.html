@@ -27,7 +27,7 @@
               </td>
               <td>{{ product.description }}</td>
               <td>{{ product.price }}</td>
-              <td>{{ product.priceAfterSummary }}</td>
+              <td>{{ product.priceAfterSummary | number }}</td>
               <td>{{ product.quantity }}</td>
               <td>
                 <mat-icon style="cursor: pointer" (click)="addQuantity(product)"
