@@ -11,7 +11,9 @@
               <th>Product Image</th>
               <th>Description</th>
               <th>Price</th>
+              <th>Price Total</th>
               <th>Quantity</th>
+              <th>Change</th>
               <th>Total</th>
               <th>Action</th>
             </tr>
@@ -25,8 +27,18 @@
               </td>
               <td>{{ product.description }}</td>
               <td>{{ product.price }}</td>
+              <td>{{ product.priceAfterSummary }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>
+                <mat-icon style="cursor: pointer" (click)="addQuantity(product)"
+                  >add_circle_outline</mat-icon
+                ><mat-icon
+                  style="cursor: pointer"
+                  (click)="reduceQuantity(product)"
+                  >remove_circle_outline</mat-icon
+                >
+              </td>
 
-              <td>1</td>
               <td>
                 <button class="btn btn-danger" (click)="deleteProduct(product)">
                   Delete

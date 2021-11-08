@@ -11,6 +11,7 @@ img {
 }
 mat-radio-group {
   margin-left: 70px;
+  width: 100%;
 }
 mat-radio-button {
   margin-left: 50px;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product-model';
+import { ProductInShop } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -12,11 +12,17 @@ export class CardComponent implements OnInit {
 
   constructor(private cartService: CartService) {}
 
-  deleteProduct(product: Product) {
+  deleteProduct(product: ProductInShop) {
     this.cartService.deleteProduct(product);
   }
   clearAll() {
     this.cartService.removeAllProducts();
+  }
+  addQuantity(product: ProductInShop) {
+    this.cartService.addQuantity(product);
+  }
+  reduceQuantity(product: ProductInShop) {
+    this.cartService.reduceQuantity(product);
   }
 
   ngOnInit(): void {}

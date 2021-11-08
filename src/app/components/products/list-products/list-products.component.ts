@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product-model';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ProductInShop } from 'src/app/models/product-model';
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/cart.service';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-list-products',
@@ -9,20 +12,31 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./list-products.component.css'],
 })
 export class ListProductsComponent implements OnInit {
-  public listOfProducts: Product[] = [];
-  searchKey: string = '';
-  public filterCategory: Product[] = [];
-  public category: string = '';
+  constructor(
+    private http: ApiService,
+    private cartService: CartService,
+    private filter: FilterService
+  ) {}
 
-  constructor(private http: ApiService, private cartService: CartService) {}
+  public listOfProducts$ = this.http.productList$;
 
-  ngOnInit(): void {
-    this.http.getProduct().subscribe((res) => {
-      this.listOfProducts = res;
-    });
-  }
+  filteredProducts$: Observable<ProductInShop[]> = combineLatest([
+    this.listOfProducts$,
+    this.filter.valueChangesListener(),
+  ]).pipe(
+    map(([products, [search, category]]) =>
+      products.filter((product) => {
+        return category === ''
+          ? product.title.toLocaleLowerCase().trim().includes(search)
+          : product.title.toLocaleLowerCase().trim().includes(search) &&
+              product.category === category;
+      })
+    )
+  );
 
-  addToCart(item: Product) {
+  ngOnInit(): void {}
+
+  addToCart(item: ProductInShop) {
     this.cartService.addProduct(item);
   }
 }

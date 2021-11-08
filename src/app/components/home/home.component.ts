@@ -10,8 +10,4 @@ export class HomeComponent implements OnInit {
   constructor(private filter: FilterService) {}
 
   ngOnInit(): void {}
-
-  test() {
-    this.filter.filterProducts();
-  }
 }

@@ -10,3 +10,7 @@ export interface Product {
     count: number;
   };
 }
+export interface ProductInShop extends Product {
+  quantity: number;
+  priceAfterSummary: number;
+}

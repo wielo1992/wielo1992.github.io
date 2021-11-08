@@ -12,18 +12,16 @@
     <mat-form-field class="example-form-field" appearance="fill">
       <mat-label>Search for product</mat-label>
 
-      <form [formGroup]="form">
-        <input matInput type="text" formControlName="search" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-      </form>
+      <input matInput type="text" [formControl]="ctrlSearch" />
+      <button
+        *ngIf="value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="value = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
 
     <mat-icon class="search" style="cursor: pointer">search</mat-icon>
