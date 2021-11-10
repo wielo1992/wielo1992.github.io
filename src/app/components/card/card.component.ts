@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductInShop } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-card',
@@ -8,9 +9,12 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  readonly products = this.cartService.prductList$;
-
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private localStorage: LocalStorageService
+  ) {}
+  readonly products = this.cartService.productListinCart$;
+  readonly cartProducts = this.localStorage.cardProducts$;
 
   deleteProduct(product: ProductInShop) {
     this.cartService.deleteProduct(product);
