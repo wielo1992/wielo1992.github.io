@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   ) {}
   public value = '';
   public totalItem = 0;
-  public searchedData: string = '';
   public ctrlSearch = this.filterService.ctrlSearch;
 
   ngOnInit(): void {

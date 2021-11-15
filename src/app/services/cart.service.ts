@@ -10,21 +10,31 @@ export class CartService {
   public productListInCart = new BehaviorSubject<ProductInShop[]>([]);
   public productListinCart$ = this.productListInCart.asObservable();
 
-  constructor(private localStorage: LocalStorageService) {}
+  constructor(private localStorage: LocalStorageService) {
+    this.loadCart();
+    this.productListinCart$.subscribe((data) =>
+      this.localStorage.addToLocalStorage(data)
+    );
+  }
+
+  loadCart() {
+    this.productListInCart.next(this.localStorage.getFromLocalStorage());
+  }
 
   addProduct(product: ProductInShop) {
-    const productInCard = this.productListInCart.value.find(
+    const productInCart = this.productListInCart.value.find(
       (cartProduct) => cartProduct.id === product.id
     );
-    productInCard
-      ? (productInCard.quantity += 1) &&
-        (productInCard.priceAfterSummary =
-          product.price * productInCard.quantity)
-      : this.productListInCart.next([
-          ...this.productListInCart.value,
-          { ...product },
-        ]);
-    this.localStorage.addToLocalStorage(this.productListInCart.value);
+
+    productInCart
+      ? this.productListInCart.next([
+          ...this.productListInCart.value.filter(
+            (filteredProductInCard) =>
+              filteredProductInCard.id !== productInCart.id
+          ),
+          { ...productInCart, quantity: productInCart.quantity + 1 },
+        ])
+      : this.productListInCart.next([...this.productListInCart.value, product]);
   }
 
   deleteProduct(product: ProductInShop) {
@@ -38,13 +48,29 @@ export class CartService {
     this.productListInCart.next(clearedProducts);
   }
   addQuantity(product: ProductInShop) {
-    product.quantity = product.quantity + 1;
-    product.priceAfterSummary = product.priceAfterSummary + product.price;
+    this.productListInCart.next([
+      ...this.productListInCart.value.filter(
+        (filteredProductInCard) => filteredProductInCard.id !== product.id
+      ),
+      {
+        ...product,
+        quantity: product.quantity + 1,
+        priceAfterSummary: product.priceAfterSummary + product.price,
+      },
+    ]);
   }
   reduceQuantity(product: ProductInShop) {
     product.quantity === 1
       ? this.deleteProduct(product)
-      : (product.quantity = product.quantity - 1);
-    product.priceAfterSummary = product.priceAfterSummary - product.price;
+      : this.productListInCart.next([
+          ...this.productListInCart.value.filter(
+            (filteredProductInCard) => filteredProductInCard.id !== product.id
+          ),
+          {
+            ...product,
+            quantity: product.quantity - 1,
+            priceAfterSummary: product.priceAfterSummary - product.price,
+          },
+        ]);
   }
 }

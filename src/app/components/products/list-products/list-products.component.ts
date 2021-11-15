@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductInShop } from 'src/app/models/product-model';
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/cart.service';
 import { FilterService } from 'src/app/services/filter.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
   styleUrls: ['./list-products.component.css'],
 })
-export class ListProductsComponent implements OnInit {
+export class ListProductsComponent {
   constructor(
-    private localStorage: LocalStorageService,
     private http: ApiService,
     private cartService: CartService,
     private filter: FilterService
@@ -35,8 +33,6 @@ export class ListProductsComponent implements OnInit {
       })
     )
   );
-
-  ngOnInit(): void {}
 
   addToCart(item: ProductInShop) {
     this.cartService.addProduct(item);

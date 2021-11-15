@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
-import { CartService } from 'src/app/services/cart.service';
+import { Component } from '@angular/core';
 import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
@@ -8,14 +6,8 @@ import { FilterService } from 'src/app/services/filter.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent implements OnInit {
-  constructor(
-    private cart: CartService,
-    private filter: FilterService,
-    private http: ApiService
-  ) {}
+export class ProductsComponent {
+  constructor(private filter: FilterService) {}
 
   public ctrlCategory = this.filter.ctrlCategory;
-
-  ngOnInit(): void {}
 }

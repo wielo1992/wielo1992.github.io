@@ -18,7 +18,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListProductsComponent } from './components/products/list-products/list-products.component';
 import { ProductsComponent } from './components/products/products.component';
-import { SingleProductComponent } from './components/products/single-product/single-product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { SingleProductComponent } from './components/products/single-product/sin
     HeaderComponent,
     ProductsComponent,
     CardComponent,
-    SingleProductComponent,
     ListProductsComponent,
   ],
   imports: [

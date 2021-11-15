@@ -1,5 +1,5 @@
 <hr />
-<ng-container *ngIf="(products | async)?.length">
+<ng-container *ngIf="(productsInCart | async)?.length">
   <div class="container">
     <div class="card-table">
       <div class="cart-product">
@@ -19,7 +19,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let product of products | async; let i = index">
+            <tr *ngFor="let product of productsInCart | async; let i = index">
               <td>{{ i + 1 }}</td>
               <td>{{ product.title }}</td>
               <td>
@@ -53,7 +53,7 @@
   <button (click)="clearAll()">Clear All Cart</button>
 </ng-container>
 
-<ng-container *ngIf="!(products | async)?.length">
+<ng-container *ngIf="!(productsInCart | async)?.length">
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
