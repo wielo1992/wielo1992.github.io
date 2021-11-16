@@ -32,7 +32,12 @@ export class CartService {
             (filteredProductInCard) =>
               filteredProductInCard.id !== productInCart.id
           ),
-          { ...productInCart, quantity: productInCart.quantity + 1 },
+          {
+            ...productInCart,
+            quantity: productInCart.quantity + 1,
+            priceAfterSummary:
+              productInCart.priceAfterSummary + productInCart.price,
+          },
         ])
       : this.productListInCart.next([...this.productListInCart.value, product]);
   }
