@@ -1,0 +1,37 @@
+.example-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 10px;
+
+  mat-card-title {
+    max-width: 150px;
+  }
+  mat-card-actions {
+    margin-bottom: 20px;
+  }
+  mat-card-content {
+    max-height: 200px;
+
+    overflow: hidden;
+    text-overflow: clip;
+  }
+  img {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+}
+.container-fluid {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.row {
+  display: flex;
+}
+@media (max-width: 700px) {
+  .example-card {
+    max-width: 300px;
+  }
+}

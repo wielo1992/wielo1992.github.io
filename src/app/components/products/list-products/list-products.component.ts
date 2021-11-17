@@ -9,7 +9,7 @@ import { FilterService } from 'src/app/services/filter.service';
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
-  styleUrls: ['./list-products.component.css'],
+  styleUrls: ['./list-products.component.scss'],
 })
 export class ListProductsComponent {
   constructor(

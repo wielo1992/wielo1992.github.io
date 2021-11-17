@@ -1,0 +1,46 @@
+mat-toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-left {
+  span {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .example-icon {
+    display: none;
+  }
+}
+.nav-right {
+  span {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+.example-form-field {
+  width: 300px;
+}
+@media (max-width: 700px) {
+  mat-toolbar {
+    display: flex;
+    padding-top: 10px;
+  }
+  .nav-right {
+    span {
+      display: none;
+    }
+  }
+  .nav-left {
+    display: flex;
+
+    .example-icon {
+      display: flex;
+      background: transparent;
+    }
+  }
+  .example-form-field {
+    width: 150px;
+  }
+}

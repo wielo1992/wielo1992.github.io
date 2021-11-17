@@ -1,0 +1,18 @@
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="navStatus">
+    <mat-toolbar>
+      <span routerLink="/" (click)="!(navStatus = false)">Home</span>
+      <span routerLink="/products/list-products" (click)="!(navStatus = false)"
+        >Products</span
+      >
+      <span routerLink="/shopping-card" (click)="!(navStatus = false)"
+        >Cart</span
+      >
+    </mat-toolbar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header (navBarStatus)="showSideNav($event)"></app-header>
+
+    <router-outlet></router-outlet
+  ></mat-sidenav-content>
+</mat-sidenav-container>
