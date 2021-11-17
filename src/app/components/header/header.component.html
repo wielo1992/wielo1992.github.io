@@ -1,14 +1,16 @@
 <mat-toolbar>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <div class="navigation">
+  <div class="nav-left">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon (click)="sideNavOpen()">menu</mat-icon>
+    </button>
+
+    <span>Shop</span>
+  </div>
+  <div class="nav-right">
     <mat-form-field class="example-form-field" appearance="fill">
       <mat-label>Search for product</mat-label>
 
@@ -29,16 +31,16 @@
     <span style="cursor: pointer" routerLink="/products/list-products"
       >Products</span
     >
+
+    <mat-icon
+      routerLink="/shopping-card"
+      matBadge="{{ totalItem }}"
+      matBadgeColor="warn"
+      style="cursor: pointer; margin-right: 20px"
+    >
+      local_grocery_store</mat-icon
+    >
+
+    <span class="cdk-visually-hidden"> </span>
   </div>
-
-  <mat-icon
-    routerLink="/shopping-card"
-    matBadge="{{ totalItem }}"
-    matBadgeColor="warn"
-    style="cursor: pointer; margin-right: 20px"
-  >
-    local_grocery_store</mat-icon
-  >
-
-  <span class="cdk-visually-hidden"> </span>
 </mat-toolbar>
