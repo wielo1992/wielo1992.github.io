@@ -2,16 +2,51 @@
   margin: 20px;
   padding: 20px;
 }
+::ng-deep.mat-radio-container {
+  display: none !important;
+  box-sizing: border-box;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+::ng-deep.mat-radio-label-content {
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+  display: inline-block;
+  order: 0;
+  line-height: inherit;
+  padding-left: 8px;
+  padding-right: 0;
+  border-left-style: inset;
+  border-width: 4px;
+  position: relative;
+}
 
+::ng-deep.mat-radio-label-content::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgb(148, 147, 147);
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease-in;
+}
+::ng-deep.mat-radio-label-content:hover::after {
+  transform: scaleX(1);
+}
 h3 {
   margin-top: 40px;
   display: flex;
   justify-content: center;
 }
 
-img {
-  max-width: 100px;
-}
 mat-radio-group {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -23,7 +58,8 @@ mat-radio-group {
 mat-radio-button {
   margin-left: 50px;
 }
-@media (max-width: 700px) {
+
+@media (max-width: 639px) {
   mat-radio-button {
     margin-left: 50px;
   }
