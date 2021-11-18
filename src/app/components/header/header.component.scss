@@ -1,7 +1,7 @@
 mat-toolbar {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  padding-top: 20px;
 }
 
 .nav-left {
@@ -17,6 +17,9 @@ mat-toolbar {
   span {
     margin-left: 20px;
     margin-right: 20px;
+  }
+  .example-form-field {
+    width: 100%;
   }
 }
 .example-form-field {

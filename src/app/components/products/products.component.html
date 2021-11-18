@@ -1,11 +1,13 @@
-<h3>Categories</h3>
+<div class="categories">
+  <h3>Categories</h3>
 
-<mat-radio-group aria-label="Select an option" [formControl]="ctrlCategory">
-  <mat-radio-button value="">All categories</mat-radio-button>
-  <mat-radio-button value="electronics">Electronics</mat-radio-button>
-  <mat-radio-button value="fashion">Fashion</mat-radio-button>
-  <mat-radio-button value="jewelery">Jevelry</mat-radio-button>
-</mat-radio-group>
+  <mat-radio-group aria-label="Select an option" [formControl]="ctrlCategory">
+    <mat-radio-button value="">All categories</mat-radio-button>
+    <mat-radio-button value="electronics">Electronics</mat-radio-button>
+    <mat-radio-button value="fashion">Fashion</mat-radio-button>
+    <mat-radio-button value="jewelery">Jevelry</mat-radio-button>
+  </mat-radio-group>
 
-<hr />
-<router-outlet></router-outlet>
+  <hr />
+  <router-outlet></router-outlet>
+</div>
