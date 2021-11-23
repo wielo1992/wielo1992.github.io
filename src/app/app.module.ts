@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -34,6 +35,7 @@ import { WrapperComponent } from './components/wrapper/wrapper.component';
     WrapperComponent,
   ],
   imports: [
+    MatGridListModule,
     MatTableModule,
     MatTabsModule,
     MatSidenavModule,
