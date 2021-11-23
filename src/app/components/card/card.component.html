@@ -1,77 +1,173 @@
-<hr />
-<ng-container *ngIf="(productsInCart | async)?.length">
-  <div class="container">
-    <div class="card-table">
-      <div class="cart-product">
-        <table class="table table-responsive">
-          <thead>
-            <tr>
-              <th>Sr.No</th>
-              <th>Product Name</th>
-              <th>Product Image</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Price Total</th>
-              <th>Quantity</th>
-              <th>Change</th>
-              <th>Total</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let product of productsInCart | async; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ product.title }}</td>
-              <td>
-                <img style="width: 120px" src="{{ product.image }}" alt="" />
-              </td>
-              <td>{{ product.description }}</td>
-              <td>{{ product.price }}</td>
-              <td>{{ product.priceAfterSummary | number }}</td>
-              <td>{{ product.quantity }}</td>
-              <td>
-                <mat-icon style="cursor: pointer" (click)="addQuantity(product)"
-                  >add_circle_outline</mat-icon
-                ><mat-icon
-                  style="cursor: pointer"
-                  (click)="reduceQuantity(product)"
-                  >remove_circle_outline</mat-icon
-                >
-              </td>
+<ng-container class="ads" *ngIf="(productsInCart | async)?.length">
+  <ng-container *ngIf="innerWidth <= 639">
+    <mat-card class="mobile-array">
+      <h3>Items in cart</h3>
+      <mat-card
+        class="single-item"
+        *ngFor="let product of productsInCart | async; let i = index"
+      >
+        <div class="info">
+          <h5>{{ product.title | slice: 0:20 }}</h5>
 
-              <td>
-                <button class="btn btn-danger" (click)="deleteProduct(product)">
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <div class="quantity">
+            <p>
+              quantity:
+              <b>{{ product.quantity }} </b>
+            </p>
+            <span
+              ><mat-icon (click)="addQuantity(product)">add</mat-icon>
+              <mat-icon (click)="reduceQuantity(product)"
+                >remove</mat-icon
+              ></span
+            >
+          </div>
+          <p>
+            price: <b> {{ product.price }} $</b>
+          </p>
+          <p>
+            price total: <b>{{ product.priceAfterSummary | number }} $</b>
+          </p>
+          <ng-container *ngIf="this.product.hide === true">
+            <div class="hided-data">
+              <img src="{{ product.image }}" alt="" />
+              <p>{{ product.description | slice: 0:50 }}...</p>
+            </div>
+          </ng-container>
+        </div>
+        <div class="buttons">
+          <button mat-flat-button color="warn" (click)="deleteProduct(product)">
+            Delete
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="hideContent(product)"
+          >
+            Details
+          </button>
+        </div>
+      </mat-card>
+
+      <h3>Total price</h3>
+      <mat-card class="total-price">
+        <p>
+          <b>{{ totalPrice$ | async | number }} $</b>
+        </p>
+      </mat-card>
+      <div class="actions-mobile">
+        <button
+          mat-flat-button
+          color="primary"
+          routerLink="/products/list-products"
+        >
+          Back
+        </button>
+        <button mat-flat-button color="accent">Buy now</button>
+        <button mat-flat-button color="warn" (click)="clearAll()">
+          Delete
+        </button>
       </div>
-    </div>
-  </div>
-  <button (click)="clearAll()">Clear All Cart</button>
+    </mat-card></ng-container
+  >
+  <ng-container *ngIf="innerWidth > 639">
+    <mat-table [dataSource]="productsInCart" class="mat-elevation-z8">
+      <ng-container matColumnDef="No.">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let i = index"> {{ i + 1 }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Image">
+        <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+        <mat-cell *matCellDef="let element"
+          ><img class="image" src="{{ element.image }}" alt="" />
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.title | slice: 0:20 }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.price | number }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PriceTotal">
+        <mat-header-cell *matHeaderCellDef> Price total </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.priceAfterSummary | number }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Quantity">
+        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.quantity }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Actions">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <mat-icon style="cursor: pointer" (click)="addQuantity(element)"
+            >add_circle_outline</mat-icon
+          >
+          <mat-icon style="cursor: pointer" (click)="reduceQuantity(element)"
+            >remove_circle_outline</mat-icon
+          >
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Delete">
+        <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <mat-icon style="cursor: pointer" (click)="deleteProduct(element)"
+            >delete</mat-icon
+          >
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let element; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-card class="summary"
+      ><p>
+        Total : <b>{{ totalPrice$ | async | number }} $</b>
+      </p>
+      <div class="actions">
+        <button
+          mat-flat-button
+          color="primary"
+          routerLink="/products/list-products"
+        >
+          Back
+        </button>
+        <button mat-flat-button color="warn" (click)="clearAll()">
+          Clear All
+        </button>
+        <button mat-flat-button color="accent">Pay now</button>
+      </div></mat-card
+    >
+  </ng-container>
 </ng-container>
 
 <ng-container *ngIf="!(productsInCart | async)?.length">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>My Cart</mat-card-title>
-    </mat-card-header>
+  <div class="container-fluid">
     <img
-      mat-card-image
-      src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/287478ba-3b6c-42c9-8a25-6a7ff1851c09"
-      alt="Photo of a Shiba Inu"
+      src="https://scontent.fpoz1-1.fna.fbcdn.net/v/t1.15752-9/259786721_222371866636718_8178616446753296561_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=10Bo_m1BzXsAX_5hUQ9&_nc_ht=scontent.fpoz1-1.fna&oh=40b4ca4e1a9273cc8748f406a9f43a80&oe=61C39B65"
+      alt=""
     />
-    <mat-card-content>
-      <h5>Your cart is empty!</h5>
-      <h6>Add item to it</h6>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button routerLink="/products/list-products">
-        GO BACK TO SHOP
+    <h3>Your cart is epmty!</h3>
+    <div class="actions">
+      <button
+        mat-flat-button
+        color="primary"
+        routerLink="/products/list-products"
+      >
+        Go back shopping!
       </button>
-    </mat-card-actions>
-  </mat-card>
+    </div>
+  </div>
 </ng-container>

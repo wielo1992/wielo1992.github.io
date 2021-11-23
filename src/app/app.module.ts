@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,6 +34,7 @@ import { WrapperComponent } from './components/wrapper/wrapper.component';
     WrapperComponent,
   ],
   imports: [
+    MatTableModule,
     MatTabsModule,
     MatSidenavModule,
     MatRadioModule,

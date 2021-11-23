@@ -8,9 +8,15 @@
       <mat-icon (click)="sideNavOpen()">menu</mat-icon>
     </button>
 
-    <span>Shop</span>
+    <span
+      ><img
+        class="store"
+        src="https://scontent.fpoz1-1.fna.fbcdn.net/v/t1.15752-9/260055091_193572879538317_8858622510813727183_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PD0AkF36ZTMAX_rYsYV&_nc_ht=scontent.fpoz1-1.fna&oh=0717cdaced9c3b26653d1b035b406317&oe=61C14813"
+        alt=""
+    /></span>
   </div>
-  <div class="nav-right">
+
+  <div class="search">
     <mat-form-field class="example-form-field" appearance="fill">
       <mat-label>Search for product</mat-label>
 
@@ -25,8 +31,8 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-
-    <mat-icon class="search" style="cursor: pointer">search</mat-icon>
+  </div>
+  <div class="nav-right">
     <span style="cursor: pointer" routerLink="/">Home</span>
     <span style="cursor: pointer" routerLink="/products/list-products"
       >Products</span

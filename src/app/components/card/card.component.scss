@@ -1,8 +1,98 @@
-.example-card {
-  max-width: 500px;
-  margin: auto;
+.container-fluid {
+  margin-top: 30px;
   width: 50%;
-}
-mat-card-content {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
+}
+::ng-deep.pc {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  position: relative;
+  padding: 16px;
+  border-radius: 4px;
+  text-align: center;
+  margin: 20px;
+  max-width: 1000px;
+}
+.mobile-array {
+  margin: 20px;
+  .single-item {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+
+    .info {
+      .quantity {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+  .actions-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    button {
+      margin: 2px;
+    }
+  }
+  .total-price {
+    margin: 20px;
+  }
+  .hided-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  background-color: cadetblue;
+}
+.mat-elevation-z8 {
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.image {
+  width: 50px;
+}
+
+mat-row,
+mat-header-row,
+mat-footer-row {
+  display: flex;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 4px;
+  padding: 21px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  .actions {
+    button {
+      margin-left: 20px;
+    }
+  }
 }
