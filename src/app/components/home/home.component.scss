@@ -1,15 +1,58 @@
-.greetings {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  h3 {
-    text-align: center;
-    margin-top: 30px;
+img {
+  width: 100px;
+}
+
+.description {
+  position: absolute;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  padding: 0 70px;
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    font-size: 30px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 50px;
   }
-  img {
-    margin-top: 20px;
-    max-width: 800px;
+  h1 {
+    font-size: 35px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    line-height: 70px;
+  }
+  p {
+    font-size: 14px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 25px;
+    margin-bottom: 20px;
+  }
+  .zoom {
+    padding: 50px;
+    background-color: transparent;
+    transition: transform 0.2s; /* Animation */
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
+  .zoom:hover {
+    transform: scale(
+      1.5
+    ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  .img-box {
+    img {
+      margin-left: 20px;
+    }
   }
 }
