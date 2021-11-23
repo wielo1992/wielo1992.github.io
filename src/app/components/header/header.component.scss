@@ -1,5 +1,6 @@
 mat-toolbar {
   justify-content: space-between;
+  background-color: transparent;
   .nav-left {
     button {
       display: none;
@@ -29,4 +30,8 @@ span {
       }
     }
   }
+}
+.store {
+  margin-top: 10px;
+  width: 60px;
 }

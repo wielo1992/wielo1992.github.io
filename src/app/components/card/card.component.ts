@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ProductInShop } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -7,9 +7,23 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   constructor(private cartService: CartService) {}
+
   readonly productsInCart = this.cartService.productListinCart$;
+  displayedColumns = [
+    'No.',
+    'Image',
+    'Name',
+    'Price',
+    'PriceTotal',
+    'Quantity',
+    'Actions',
+    'Delete',
+  ];
+
+  innerWidth: any;
+  totalPrice$ = this.cartService.totalPrice$;
 
   deleteProduct(product: ProductInShop) {
     this.cartService.deleteProduct(product);
@@ -22,5 +36,17 @@ export class CardComponent {
   }
   reduceQuantity(product: ProductInShop) {
     this.cartService.reduceQuantity(product);
+  }
+  hideContent(product: ProductInShop) {
+    this.cartService.hideContent(product);
+  }
+
+  ngOnInit() {
+    this.innerWidth = window.innerWidth;
+    this.cartService.clearHide();
+  }
+
+  @HostListener('window:resize') trackResolution() {
+    this.innerWidth = window.innerWidth;
   }
 }

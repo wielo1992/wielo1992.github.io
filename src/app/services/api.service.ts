@@ -22,6 +22,7 @@ export class ApiService {
               ...product,
               quantity: 1,
               priceAfterSummary: product.price,
+              hide: true,
             } as ProductInShop)
         )
       ),
