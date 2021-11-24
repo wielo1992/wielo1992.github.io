@@ -18,26 +18,70 @@
   max-width: 1000px;
 }
 .mobile-array {
-  margin: 20px;
+  margin: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
   .single-item {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
+    flex-wrap: wrap;
+    border-style: groove;
+    padding: 10px;
+    margin: initial;
+    max-height: 140px;
+    margin-bottom: 7px;
+    .top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-    .info {
-      .quantity {
+      .info {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        h5 {
+          margin-left: 20px;
+        }
+
+        img {
+          width: 50px;
+          height: 70px;
+        }
       }
+    }
+
+    .quantity {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: 20px;
+      span {
+        margin-left: 10px;
+      }
+    }
+    .price {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 20px;
     }
   }
   .actions-mobile {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    button {
-      margin: 2px;
+    .back {
+      display: flex;
+      flex-direction: row;
+      p {
+        margin-left: 4px;
+      }
+    }
+    .forward {
+      display: flex;
+      flex-direction: row;
+      p {
+        margin-right: 4px;
+      }
     }
   }
   .total-price {
@@ -91,8 +135,108 @@ mat-footer-row {
   margin-right: 40px;
   margin-bottom: 40px;
   .actions {
-    button {
-      margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    .back {
+      display: flex;
+      flex-direction: row;
+      margin-right: 50px;
+      p {
+        margin-left: 5px;
+        position: relative;
+      }
+      p:after {
+        content: "";
+        position: absolute;
+        background-color: rgb(148, 147, 147);
+        height: 3px;
+        width: 0;
+        left: 0;
+        bottom: -3px;
+        transition: 0.3s;
+      }
+      p:hover:after {
+        width: 100%;
+      }
+    }
+    .forward {
+      display: flex;
+      flex-direction: row;
+      p {
+        margin-right: 5px;
+        position: relative;
+      }
+
+      p:after {
+        content: "";
+        position: absolute;
+        background-color: rgb(148, 147, 147);
+        height: 3px;
+        width: 0;
+        left: 0;
+        bottom: -3px;
+        transition: 0.3s;
+      }
+      p:hover:after {
+        width: 100%;
+      }
+    }
+  }
+}
+.total-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  p {
+    font-size: 20px;
+  }
+}
+.clear {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  margin-top: 30px;
+  width: fit-content;
+  p {
+    position: relative;
+    margin-left: 5px;
+  }
+  p:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(148, 147, 147);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -3px;
+    transition: 0.3s;
+  }
+  p:hover:after {
+    width: 100%;
+  }
+}
+.actions-empty {
+  .back {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    p {
+      margin-left: 5px;
+      position: relative;
+    }
+    p:after {
+      content: "";
+      position: absolute;
+      background-color: rgb(148, 147, 147);
+      height: 3px;
+      width: 0;
+      left: 0;
+      bottom: -3px;
+      transition: 0.3s;
+    }
+
+    p:hover:after {
+      width: 100%;
     }
   }
 }
