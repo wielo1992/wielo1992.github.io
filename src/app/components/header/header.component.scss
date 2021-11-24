@@ -13,9 +13,23 @@ mat-toolbar {
     }
   }
 }
-span {
+.menu {
   margin-left: 20px;
   margin-right: 20px;
+  position: relative;
+}
+.menu:after {
+  content: "";
+  position: absolute;
+  background-color: rgb(148, 147, 147);
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -3px;
+  transition: 0.3s;
+}
+.menu:hover:after {
+  width: 100%;
 }
 @media only screen and (max-width: 639px) {
   mat-toolbar {
@@ -34,4 +48,13 @@ span {
 .store {
   margin-top: 10px;
   width: 60px;
+}
+.active {
+  position: relative;
+  border-style: solid;
+  border-bottom: solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: rgb(148, 147, 147);
 }

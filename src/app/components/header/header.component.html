@@ -33,8 +33,19 @@
     </mat-form-field>
   </div>
   <div class="nav-right">
-    <span style="cursor: pointer" routerLink="/">Home</span>
-    <span style="cursor: pointer" routerLink="/products/list-products"
+    <span
+      class="menu"
+      style="cursor: pointer"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</span
+    >
+    <span
+      class="menu"
+      style="cursor: pointer"
+      routerLink="/products/list-products"
+      routerLinkActive="active"
       >Products</span
     >
 

@@ -1,17 +1,31 @@
 <ng-container class="ads" *ngIf="(productsInCart | async)?.length">
   <ng-container *ngIf="innerWidth <= 639">
-    <mat-card class="mobile-array">
-      <h3>Items in cart</h3>
-      <mat-card
+    <div class="clear" style="cursor: pointer" (click)="clearAll()">
+      <mat-icon>close</mat-icon>
+      <p>Clear cart</p>
+    </div>
+
+    <div class="mobile-array">
+      <div
         class="single-item"
         *ngFor="let product of productsInCart | async; let i = index"
       >
-        <div class="info">
-          <h5>{{ product.title | slice: 0:20 }}</h5>
+        <div class="top">
+          <div class="info">
+            <img src="{{ product.image }}" alt="" />
+            <h5>{{ product.title | slice: 0:20 }}</h5>
+          </div>
 
+          <div class="buttons">
+            <mat-icon style="cursor: pointer" (click)="deleteProduct(product)"
+              >delete</mat-icon
+            >
+          </div>
+        </div>
+
+        <div class="price">
           <div class="quantity">
             <p>
-              quantity:
               <b>{{ product.quantity }} </b>
             </p>
             <span
@@ -22,54 +36,40 @@
             >
           </div>
           <p>
-            price: <b> {{ product.price }} $</b>
+            <b>{{ product.priceAfterSummary | number }} $</b>
           </p>
-          <p>
-            price total: <b>{{ product.priceAfterSummary | number }} $</b>
-          </p>
-          <ng-container *ngIf="this.product.hide === true">
-            <div class="hided-data">
-              <img src="{{ product.image }}" alt="" />
-              <p>{{ product.description | slice: 0:50 }}...</p>
-            </div>
-          </ng-container>
         </div>
-        <div class="buttons">
-          <button mat-flat-button color="warn" (click)="deleteProduct(product)">
-            Delete
-          </button>
-          <button
-            mat-flat-button
-            color="primary"
-            (click)="hideContent(product)"
-          >
-            Details
-          </button>
-        </div>
-      </mat-card>
+      </div>
+      <div class="total-price">
+        <h3>Total price</h3>
 
-      <h3>Total price</h3>
-      <mat-card class="total-price">
         <p>
           <b>{{ totalPrice$ | async | number }} $</b>
         </p>
-      </mat-card>
+      </div>
+
       <div class="actions-mobile">
-        <button
-          mat-flat-button
-          color="primary"
+        <div
+          class="back"
+          style="cursor: pointer"
           routerLink="/products/list-products"
         >
-          Back
-        </button>
-        <button mat-flat-button color="accent">Buy now</button>
-        <button mat-flat-button color="warn" (click)="clearAll()">
-          Delete
-        </button>
+          <mat-icon style="cursor: pointer">arrow_back</mat-icon>
+          <p>Go Back shooping</p>
+        </div>
+
+        <div class="forward" style="cursor: pointer">
+          <p>Pay now</p>
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
       </div>
-    </mat-card></ng-container
+    </div></ng-container
   >
   <ng-container *ngIf="innerWidth > 639">
+    <div class="clear" style="cursor: pointer" (click)="clearAll()">
+      <mat-icon>close</mat-icon>
+      <p>Clear cart</p>
+    </div>
     <mat-table [dataSource]="productsInCart" class="mat-elevation-z8">
       <ng-container matColumnDef="No.">
         <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
@@ -137,17 +137,19 @@
         Total : <b>{{ totalPrice$ | async | number }} $</b>
       </p>
       <div class="actions">
-        <button
-          mat-flat-button
-          color="primary"
+        <div
+          class="back"
+          style="cursor: pointer"
           routerLink="/products/list-products"
         >
-          Back
-        </button>
-        <button mat-flat-button color="warn" (click)="clearAll()">
-          Clear All
-        </button>
-        <button mat-flat-button color="accent">Pay now</button>
+          <mat-icon style="cursor: pointer">arrow_back</mat-icon>
+          <p>Go Back shooping</p>
+        </div>
+
+        <div class="forward" style="cursor: pointer">
+          <p>Pay now</p>
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
       </div></mat-card
     >
   </ng-container>
@@ -160,14 +162,15 @@
       alt=""
     />
     <h3>Your cart is epmty!</h3>
-    <div class="actions">
-      <button
-        mat-flat-button
-        color="primary"
+    <div class="actions-empty">
+      <div
+        class="back"
+        style="cursor: pointer"
         routerLink="/products/list-products"
       >
-        Go back shopping!
-      </button>
+        <mat-icon style="cursor: pointer">arrow_back</mat-icon>
+        <p>Go Back shooping</p>
+      </div>
     </div>
   </div>
 </ng-container>

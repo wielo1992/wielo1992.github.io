@@ -29,7 +29,9 @@ export class CardComponent implements OnInit {
     this.cartService.deleteProduct(product);
   }
   clearAll() {
-    this.cartService.removeAllProducts();
+    if (confirm('Are You sure to clear cart?')) {
+      this.cartService.removeAllProducts();
+    }
   }
   addQuantity(product: ProductInShop) {
     this.cartService.addQuantity(product);
