@@ -22,22 +22,17 @@ export class ApiService {
 
       map((products) =>
         products.map((product) =>
-          product.category === "men's clothing" ||
-          product.category === "women's clothing"
-            ? { ...product, category: 'fashion' }
-            : product
+          this.mapMenAndWomenClothingToOneCategory(product)
         )
       ),
       tap((res) => this.productList.next(res))
     );
   }
   postPaymentDetails(paymentDetails: Payment) {
-    this.http
-      .post(
-        'https://shop-147bd-default-rtdb.europe-west1.firebasedatabase.app/post.json',
-        paymentDetails
-      )
-      .subscribe((paymentDetails) => console.log(paymentDetails));
+    this.http.post(
+      'https://shop-147bd-default-rtdb.europe-west1.firebasedatabase.app/post.json',
+      paymentDetails
+    );
   }
   mapProductToProductInShop(product: Product) {
     return {
@@ -46,5 +41,11 @@ export class ApiService {
       priceAfterSummary: product.price,
       hide: true,
     } as ProductInShop;
+  }
+  mapMenAndWomenClothingToOneCategory(product: ProductInShop) {
+    return product.category === "men's clothing" ||
+      product.category === "women's clothing"
+      ? { ...product, category: 'fashion' }
+      : product;
   }
 }
