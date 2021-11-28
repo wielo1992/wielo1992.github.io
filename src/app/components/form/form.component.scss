@@ -1,0 +1,18 @@
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  mat-card {
+    width: 90%;
+    margin-top: 20px;
+    .mat-stepper-horizontal {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+
+      .mat-form-field {
+        margin-top: 16px;
+        margin-left: 20px;
+      }
+    }
+  }
+}
