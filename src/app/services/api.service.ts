@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Payment } from '../models/payment';
 import { Product, ProductInShop } from '../models/product-model';
 
 @Injectable({
@@ -37,5 +38,13 @@ export class ApiService {
       ),
       tap((res) => this.productList.next(res))
     );
+  }
+  postPaymentDetails(paymentDetails: Payment) {
+    this.http
+      .post(
+        'https://shop-147bd-default-rtdb.europe-west1.firebasedatabase.app/post.json',
+        paymentDetails
+      )
+      .subscribe((paymentDetails) => console.log(paymentDetails));
   }
 }
