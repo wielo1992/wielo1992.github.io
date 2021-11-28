@@ -16,3 +16,8 @@ export interface ProductInShop extends Product {
   hide: boolean;
   orderNumber: number;
 }
+export enum ProductCategory {
+  MENS_CATEGORY = "men's clothing",
+  WOMENS_CATEGORY = "women's clothing",
+  FASHION_CATEGORY = 'fashion',
+}
