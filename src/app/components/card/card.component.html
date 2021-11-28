@@ -1,4 +1,7 @@
-<ng-container class="ads" *ngIf="(productsInCart | async)?.length">
+<ng-container
+  class="ads"
+  *ngIf="(productsInCart$ | async)?.length; else noProductsInCart"
+>
   <ng-container *ngIf="innerWidth <= 639">
     <div class="clear" style="cursor: pointer" (click)="clearAll()">
       <mat-icon>close</mat-icon>
@@ -8,7 +11,7 @@
     <div class="mobile-array">
       <div
         class="single-item"
-        *ngFor="let product of productsInCart | async; let i = index"
+        *ngFor="let product of productsInCart$ | async; let i = index"
       >
         <div class="top">
           <div class="info">
@@ -70,7 +73,7 @@
       <mat-icon>close</mat-icon>
       <p>Clear cart</p>
     </div>
-    <mat-table [dataSource]="productsInCart" class="mat-elevation-z8">
+    <mat-table [dataSource]="productsInCart$ | async" class="mat-elevation-z8">
       <ng-container matColumnDef="No.">
         <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
         <mat-cell *matCellDef="let i = index"> {{ i + 1 }} </mat-cell>
@@ -155,7 +158,7 @@
   </ng-container>
 </ng-container>
 
-<ng-container *ngIf="!(productsInCart | async)?.length">
+<ng-template #noProductsInCart>
   <div class="container-fluid">
     <img
       src="https://scontent.fpoz1-1.fna.fbcdn.net/v/t1.15752-9/259786721_222371866636718_8178616446753296561_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=10Bo_m1BzXsAX_5hUQ9&_nc_ht=scontent.fpoz1-1.fna&oh=40b4ca4e1a9273cc8748f406a9f43a80&oe=61C39B65"
@@ -173,4 +176,4 @@
       </div>
     </div>
   </div>
-</ng-container>
+</ng-template>

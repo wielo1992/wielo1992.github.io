@@ -19,6 +19,7 @@ export class CartService {
       this.localStorage.addToLocalStorage(data)
     );
     this.summPrice();
+    this.sortByOrder();
   }
 
   loadCart() {
@@ -43,8 +44,25 @@ export class CartService {
               productInCart.priceAfterSummary + productInCart.price,
           },
         ])
-      : this.productListInCart.next([...this.productListInCart.value, product]);
-    this.summPrice();
+      : !this.productListInCart.value.length
+      ? this.productListInCart.next([
+          ...this.productListInCart.value,
+          { ...product, orderNumber: 1 },
+        ])
+      : this.productListInCart.next([
+          ...this.productListInCart.value,
+          {
+            ...product,
+            orderNumber: this.productListInCart.value[
+              this.productListInCart.value.length - 1
+            ].orderNumber++,
+          },
+        ]);
+
+    this.productListInCart.next(
+      this.productListInCart.value.sort((a, b) => a.orderNumber - b.orderNumber)
+    );
+    console.log(this.productListInCart.value);
   }
 
   deleteProduct(product: ProductInShop) {
@@ -70,6 +88,7 @@ export class CartService {
       },
     ]);
     this.summPrice();
+    this.sortByOrder();
   }
   reduceQuantity(product: ProductInShop) {
     product.quantity === 1
@@ -85,6 +104,7 @@ export class CartService {
           },
         ]);
     this.summPrice();
+    this.sortByOrder();
   }
   summPrice() {
     const priceSummary = this.productListInCart.value.reduce((acc, val) => {
@@ -97,5 +117,8 @@ export class CartService {
   }
   clearHide() {
     this.productListInCart.value.map((products) => (products.hide = false));
+  }
+  sortByOrder() {
+    this.productListInCart.value.sort((a, b) => a.orderNumber - b.orderNumber);
   }
 }

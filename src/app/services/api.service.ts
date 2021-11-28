@@ -17,15 +17,7 @@ export class ApiService {
   getProduct() {
     return this.http.get<Product[]>('https://fakestoreapi.com/products/').pipe(
       map((products) =>
-        products.map(
-          (product) =>
-            ({
-              ...product,
-              quantity: 1,
-              priceAfterSummary: product.price,
-              hide: true,
-            } as ProductInShop)
-        )
+        products.map((product) => this.mapProductToProductInShop(product))
       ),
 
       map((products) =>
@@ -46,5 +38,13 @@ export class ApiService {
         paymentDetails
       )
       .subscribe((paymentDetails) => console.log(paymentDetails));
+  }
+  mapProductToProductInShop(product: Product) {
+    return {
+      ...product,
+      quantity: 1,
+      priceAfterSummary: product.price,
+      hide: true,
+    } as ProductInShop;
   }
 }

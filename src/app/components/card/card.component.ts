@@ -10,7 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CardComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
-  readonly productsInCart = this.cartService.productListinCart$;
+  readonly productsInCart$ = this.cartService.productListinCart$;
   displayedColumns = [
     'No.',
     'Image',

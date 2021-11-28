@@ -14,4 +14,5 @@ export interface ProductInShop extends Product {
   quantity: number;
   priceAfterSummary: number;
   hide: boolean;
+  orderNumber: number;
 }
