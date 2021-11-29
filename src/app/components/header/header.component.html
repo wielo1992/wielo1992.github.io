@@ -21,15 +21,6 @@
       <mat-label>Search for product</mat-label>
 
       <input matInput type="text" [formControl]="ctrlSearch" />
-      <button
-        *ngIf="value"
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="value = ''"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
     </mat-form-field>
   </div>
   <div class="nav-right">
@@ -51,7 +42,7 @@
 
     <mat-icon
       routerLink="/shopping-card"
-      matBadge="{{ totalItem }}"
+      matBadge="{{ productListLength$ | async }}"
       matBadgeColor="warn"
       style="cursor: pointer; margin-right: 20px"
     >

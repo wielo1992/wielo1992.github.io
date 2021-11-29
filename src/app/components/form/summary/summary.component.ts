@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, tap } from 'rxjs/operators';
-import { Payment } from 'src/app/models/payment';
 import { CartService } from 'src/app/services/cart.service';
 import { FormServiceService } from 'src/app/services/form-service.service';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -11,6 +9,7 @@ import { DialogComponent } from '../dialog/dialog.component';
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SummaryComponent {
   constructor(
@@ -18,14 +17,13 @@ export class SummaryComponent {
     private readonly cartService: CartService,
     private readonly dialog: MatDialog
   ) {}
-  totalPrice$ = this.cartService.totalPrice$;
-  personalDataForm: FormGroup = this.formService.personalData;
-  blikMethod = this.formService.blikMethod;
-  creditCardMethod = this.formService.cardMethod;
-  paypalMethod = this.formService.paypalMethod;
-  paymentMethodSelect = this.formService.method;
-  paymentMethodsArray = this.formService.paymentMethods;
-  confirmationData$: Payment;
+  readonly totalPrice$ = this.cartService.totalPrice$;
+  readonly personalDataForm = this.formService.personalData;
+  readonly blikMethod = this.formService.blikMethod;
+  readonly creditCardMethod = this.formService.cardMethod;
+  readonly paypalMethod = this.formService.paypalMethod;
+  readonly paymentMethodSelect = this.formService.method;
+  readonly paymentMethodsArray = this.formService.paymentMethods;
 
   finishPaymentForm() {
     const dialogRef = this.dialog.open(DialogComponent);
