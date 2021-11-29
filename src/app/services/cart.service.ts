@@ -12,7 +12,6 @@ export class CartService {
     this.productListinCart$.subscribe((data) =>
       this.localStorage.addToLocalStorage(data)
     );
-    this.summPrice();
   }
   private readonly productListInCart = new BehaviorSubject<ProductInShop[]>([]);
   readonly productListinCart$ = this.productListInCart.asObservable();
