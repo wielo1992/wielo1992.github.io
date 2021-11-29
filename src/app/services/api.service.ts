@@ -13,9 +13,9 @@ import {
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
-  public readonly productList = new BehaviorSubject<ProductInShop[]>([]);
+  private readonly productList = new BehaviorSubject<ProductInShop[]>([]);
   public readonly productList$ = this.productList.asObservable();
 
   getProduct() {

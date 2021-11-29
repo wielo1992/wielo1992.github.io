@@ -7,7 +7,7 @@ import { startWith } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class FilterService {
-  constructor(private fb: FormBuilder) {}
+  constructor(private readonly fb: FormBuilder) {}
   readonly ctrlSearch = this.fb.control(null);
   readonly ctrlCategory = this.fb.control(null);
 
