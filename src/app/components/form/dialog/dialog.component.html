@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Confirmation</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Are You sure Your data is correct?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="confirm()"
+  >
+    Finish
+  </button>
+</mat-dialog-actions>
