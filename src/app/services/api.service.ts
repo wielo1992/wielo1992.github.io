@@ -33,7 +33,7 @@ export class ApiService {
     );
   }
   postPaymentDetails(paymentDetails: Payment) {
-    this.http.post(
+    return this.http.post(
       'https://shop-147bd-default-rtdb.europe-west1.firebasedatabase.app/post.json',
       paymentDetails
     );

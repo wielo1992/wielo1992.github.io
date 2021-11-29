@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -22,21 +23,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing-module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
+import { EmptyCartComponent } from './components/card/empty-cart/empty-cart.component';
+import { MobileComponent } from './components/card/mobile/mobile.component';
+import { WebComponent } from './components/card/web/web.component';
+import { BlikMethodComponent } from './components/form/blik-method/blik-method.component';
+import { CreditCardMethodComponent } from './components/form/credit-card-method/credit-card-method.component';
 import { FormComponent } from './components/form/form.component';
+import { MethodDataStepperComponent } from './components/form/method-data-stepper/method-data-stepper.component';
+import { PaypalMethodComponent } from './components/form/paypal-method/paypal-method.component';
+import { PersonalDataStepperComponent } from './components/form/personal-data-stepper/personal-data-stepper.component';
+import { SummaryComponent } from './components/form/summary/summary.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListProductsComponent } from './components/products/list-products/list-products.component';
 import { ProductsComponent } from './components/products/products.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
-import { WebComponent } from './components/card/web/web.component';
-import { MobileComponent } from './components/card/mobile/mobile.component';
-import { EmptyCartComponent } from './components/card/empty-cart/empty-cart.component';
-import { PersonalDataStepperComponent } from './components/form/personal-data-stepper/personal-data-stepper.component';
-import { MethodDataStepperComponent } from './components/form/method-data-stepper/method-data-stepper.component';
-import { PaypalMethodComponent } from './components/form/paypal-method/paypal-method.component';
-import { BlikMethodComponent } from './components/form/blik-method/blik-method.component';
-import { CreditCardMethodComponent } from './components/form/credit-card-method/credit-card-method.component';
-import { SummaryComponent } from './components/form/summary/summary.component';
+import { DialogComponent } from './components/form/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,8 +59,10 @@ import { SummaryComponent } from './components/form/summary/summary.component';
     BlikMethodComponent,
     CreditCardMethodComponent,
     SummaryComponent,
+    DialogComponent,
   ],
   imports: [
+    MatDialogModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatSelectModule,

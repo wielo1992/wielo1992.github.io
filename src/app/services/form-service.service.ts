@@ -45,23 +45,27 @@ export class FormServiceService {
   });
 
   paymentFormPost() {
-    if (confirm('Are You sure Your data is correct?')) {
-      let paymentFormValue;
-      switch (this.method.controls['method'].value) {
-        case PaymentMethod.BLIK:
-          paymentFormValue = this.blikMethod.value;
+    console.log('test');
+    let paymentFormValue;
+    switch (this.method.controls['method'].value) {
+      case PaymentMethod.BLIK:
+        paymentFormValue = this.blikMethod.value;
 
-          break;
-        case PaymentMethod.CARD:
-          paymentFormValue = this.cardMethod.value;
+        break;
+      case PaymentMethod.CARD:
+        paymentFormValue = this.cardMethod.value;
 
-          break;
-        case PaymentMethod.PAYPAL:
-          paymentFormValue = this.paypalMethod.value;
-          break;
-      }
-      const finalForm = { ...this.personalData.value, ...paymentFormValue };
-      this.apiService.postPaymentDetails(finalForm);
+        break;
+      case PaymentMethod.PAYPAL:
+        paymentFormValue = this.paypalMethod.value;
+
+        const finalForm: Payment = {
+          ...this.personalData.value,
+          ...paymentFormValue,
+        };
+        this.apiService
+          .postPaymentDetails(finalForm)
+          .subscribe((data) => console.log(data));
     }
   }
 }
