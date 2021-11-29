@@ -55,7 +55,6 @@ export class CartService {
     this.productListInCart.next(
       this.productListInCart.value.sort((a, b) => a.orderNumber - b.orderNumber)
     );
-    console.log(this.productListInCart.value);
   }
 
   deleteProduct(product: ProductInShop) {
