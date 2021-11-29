@@ -45,7 +45,6 @@ export class FormServiceService {
   });
 
   paymentFormPost() {
-    console.log('test');
     let paymentFormValue;
     switch (this.method.controls['method'].value) {
       case PaymentMethod.BLIK:
@@ -63,9 +62,7 @@ export class FormServiceService {
           ...this.personalData.value,
           ...paymentFormValue,
         };
-        this.apiService
-          .postPaymentDetails(finalForm)
-          .subscribe((data) => console.log(data));
+        this.apiService.postPaymentDetails(finalForm).subscribe();
     }
   }
 }
