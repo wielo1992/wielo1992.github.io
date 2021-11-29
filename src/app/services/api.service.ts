@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Payment } from '../models/payment';
-import { Product, ProductInShop } from '../models/product-model';
+import {
+  Product,
+  ProductCategory,
+  ProductInShop,
+} from '../models/product-model';
 
 @Injectable({
   providedIn: 'root',
@@ -43,9 +47,9 @@ export class ApiService {
     } as ProductInShop;
   }
   mapMenAndWomenClothingToOneCategory(product: ProductInShop) {
-    return product.category === "men's clothing" ||
-      product.category === "women's clothing"
-      ? { ...product, category: 'fashion' }
+    return product.category === ProductCategory.MENS_CATEGORY ||
+      product.category === ProductCategory.WOMENS_CATEGORY
+      ? { ...product, category: ProductCategory.FASHION_CATEGORY }
       : product;
   }
 }

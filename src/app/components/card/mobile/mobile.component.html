@@ -1,0 +1,62 @@
+<div class="clear" style="cursor: pointer" (click)="clearAll()">
+  <mat-icon>close</mat-icon>
+  <p>Clear cart</p>
+</div>
+
+<div class="mobile-array">
+  <div
+    class="single-item"
+    *ngFor="let product of productsInCart$ | async; let i = index"
+  >
+    <div class="top">
+      <div class="info">
+        <img src="{{ product.image }}" alt="" />
+        <h5>{{ product.title | slice: 0:20 }}</h5>
+      </div>
+
+      <div class="buttons">
+        <mat-icon style="cursor: pointer" (click)="deleteProduct(product)"
+          >delete</mat-icon
+        >
+      </div>
+    </div>
+
+    <div class="price">
+      <div class="quantity">
+        <p>
+          <b>{{ product.quantity }} </b>
+        </p>
+        <span
+          ><mat-icon (click)="addQuantity(product)">add</mat-icon>
+          <mat-icon (click)="reduceQuantity(product)">remove</mat-icon></span
+        >
+      </div>
+      <p>
+        <b>{{ product.priceAfterSummary | number }} $</b>
+      </p>
+    </div>
+  </div>
+  <div class="total-price">
+    <h3>Total price</h3>
+
+    <p>
+      <b>{{ totalPrice$ | async | number }} $</b>
+    </p>
+  </div>
+
+  <div class="actions-mobile">
+    <div
+      class="back"
+      style="cursor: pointer"
+      routerLink="/products/list-products"
+    >
+      <mat-icon style="cursor: pointer">arrow_back</mat-icon>
+      <p>Go Back shooping</p>
+    </div>
+
+    <div class="forward" style="cursor: pointer" routerLink="/payment">
+      <p>Pay now</p>
+      <mat-icon>arrow_forward</mat-icon>
+    </div>
+  </div>
+</div>

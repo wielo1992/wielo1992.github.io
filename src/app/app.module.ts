@@ -28,6 +28,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ListProductsComponent } from './components/products/list-products/list-products.component';
 import { ProductsComponent } from './components/products/products.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
+import { WebComponent } from './components/card/web/web.component';
+import { MobileComponent } from './components/card/mobile/mobile.component';
+import { EmptyCartComponent } from './components/card/empty-cart/empty-cart.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { WrapperComponent } from './components/wrapper/wrapper.component';
     ListProductsComponent,
     WrapperComponent,
     FormComponent,
+    WebComponent,
+    MobileComponent,
+    EmptyCartComponent,
   ],
   imports: [
     MatNativeDateModule,

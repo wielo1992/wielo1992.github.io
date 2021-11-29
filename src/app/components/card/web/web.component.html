@@ -1,0 +1,86 @@
+<div class="clear" style="cursor: pointer" (click)="clearAll()">
+  <mat-icon>close</mat-icon>
+  <p>Clear cart</p>
+</div>
+<mat-table [dataSource]="productsInCart$ | async" class="mat-elevation-z8">
+  <ng-container matColumnDef="No.">
+    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+    <mat-cell *matCellDef="let i = index"> {{ i + 1 }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Image">
+    <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+    <mat-cell *matCellDef="let element"
+      ><img class="image" src="{{ element.image }}" alt="" />
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.title | slice: 0:20 }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.price | number }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="PriceTotal">
+    <mat-header-cell *matHeaderCellDef> Price total </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.priceAfterSummary | number }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Quantity">
+    <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.quantity }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <mat-icon style="cursor: pointer" (click)="addQuantity(element)"
+        >add_circle_outline</mat-icon
+      >
+      <mat-icon style="cursor: pointer" (click)="reduceQuantity(element)"
+        >remove_circle_outline</mat-icon
+      >
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Delete">
+    <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <mat-icon style="cursor: pointer" (click)="deleteProduct(element)"
+        >delete</mat-icon
+      >
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let element; columns: displayedColumns"></mat-row>
+</mat-table>
+<mat-card class="summary"
+  ><p>
+    Total : <b>{{ totalPrice$ | async | number }} $</b>
+  </p>
+  <div class="actions">
+    <div
+      class="back"
+      style="cursor: pointer"
+      routerLink="/products/list-products"
+    >
+      <mat-icon style="cursor: pointer">arrow_back</mat-icon>
+      <p>Go Back shooping</p>
+    </div>
+
+    <div class="forward" style="cursor: pointer" routerLink="/payment">
+      <p>Pay now</p>
+      <mat-icon>arrow_forward</mat-icon>
+    </div>
+  </div></mat-card
+>
