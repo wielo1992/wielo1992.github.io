@@ -1,0 +1,34 @@
+.container-fluid {
+  margin-top: 30px;
+  width: 50%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.actions-empty {
+  .back {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    p {
+      margin-left: 5px;
+      position: relative;
+    }
+    p:after {
+      content: "";
+      position: absolute;
+      background-color: rgb(148, 147, 147);
+      height: 3px;
+      width: 0;
+      left: 0;
+      bottom: -3px;
+      transition: 0.3s;
+    }
+
+    p:hover:after {
+      width: 100%;
+    }
+  }
+}

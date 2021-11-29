@@ -1,0 +1,102 @@
+.summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  .actions {
+    display: flex;
+    flex-direction: row;
+    .back {
+      display: flex;
+      flex-direction: row;
+      margin-right: 50px;
+      p {
+        margin-left: 5px;
+        position: relative;
+      }
+      p:after {
+        content: "";
+        position: absolute;
+        background-color: rgb(148, 147, 147);
+        height: 3px;
+        width: 0;
+        left: 0;
+        bottom: -3px;
+        transition: 0.3s;
+      }
+      p:hover:after {
+        width: 100%;
+      }
+    }
+    .forward {
+      display: flex;
+      flex-direction: row;
+      p {
+        margin-right: 5px;
+        position: relative;
+      }
+
+      p:after {
+        content: "";
+        position: absolute;
+        background-color: rgb(148, 147, 147);
+        height: 3px;
+        width: 0;
+        left: 0;
+        bottom: -3px;
+        transition: 0.3s;
+      }
+      p:hover:after {
+        width: 100%;
+      }
+    }
+  }
+}
+mat-row,
+mat-header-row,
+mat-footer-row {
+  display: flex;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 4px;
+  padding: 21px;
+}
+.clear {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  margin-top: 30px;
+  width: fit-content;
+  p {
+    position: relative;
+    margin-left: 5px;
+  }
+  p:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(148, 147, 147);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -3px;
+    transition: 0.3s;
+  }
+  p:hover:after {
+    width: 100%;
+  }
+}
+
+.mat-elevation-z8 {
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.image {
+  width: 50px;
+}
