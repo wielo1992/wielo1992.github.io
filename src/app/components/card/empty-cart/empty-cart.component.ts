@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-empty-cart',
   templateUrl: './empty-cart.component.html',
-  styleUrls: ['./empty-cart.component.scss']
+  styleUrls: ['./empty-cart.component.scss'],
 })
-export class EmptyCartComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class EmptyCartComponent {
+  constructor() {}
 }

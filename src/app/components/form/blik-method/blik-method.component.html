@@ -1,0 +1,28 @@
+<form [formGroup]="blikMethod">
+  <mat-form-field appearance="fill">
+    <mat-label>BLIK CODE</mat-label>
+    <input
+      matInput
+      formControlName="blikCode"
+      placeholder="Blik Code"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Secure Number</mat-label>
+    <input
+      matInput
+      formControlName="secureNumber"
+      placeholder="Secure Number"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>email</mat-label>
+    <input matInput formControlName="email" placeholder="E-mail" required />
+  </mat-form-field>
+  <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>

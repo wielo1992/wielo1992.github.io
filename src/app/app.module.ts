@@ -31,6 +31,12 @@ import { WrapperComponent } from './components/wrapper/wrapper.component';
 import { WebComponent } from './components/card/web/web.component';
 import { MobileComponent } from './components/card/mobile/mobile.component';
 import { EmptyCartComponent } from './components/card/empty-cart/empty-cart.component';
+import { PersonalDataStepperComponent } from './components/form/personal-data-stepper/personal-data-stepper.component';
+import { MethodDataStepperComponent } from './components/form/method-data-stepper/method-data-stepper.component';
+import { PaypalMethodComponent } from './components/form/paypal-method/paypal-method.component';
+import { BlikMethodComponent } from './components/form/blik-method/blik-method.component';
+import { CreditCardMethodComponent } from './components/form/credit-card-method/credit-card-method.component';
+import { SummaryComponent } from './components/form/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +51,12 @@ import { EmptyCartComponent } from './components/card/empty-cart/empty-cart.comp
     WebComponent,
     MobileComponent,
     EmptyCartComponent,
+    PersonalDataStepperComponent,
+    MethodDataStepperComponent,
+    PaypalMethodComponent,
+    BlikMethodComponent,
+    CreditCardMethodComponent,
+    SummaryComponent,
   ],
   imports: [
     MatNativeDateModule,
