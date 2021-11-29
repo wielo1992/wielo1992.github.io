@@ -39,6 +39,7 @@ import { ListProductsComponent } from './components/products/list-products/list-
 import { ProductsComponent } from './components/products/products.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
 import { DialogComponent } from './components/form/dialog/dialog.component';
+import { DialogCardComponent } from './components/card/dialog-card/dialog-card.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { DialogComponent } from './components/form/dialog/dialog.component';
     CreditCardMethodComponent,
     SummaryComponent,
     DialogComponent,
+    DialogCardComponent,
   ],
   imports: [
     MatDialogModule,

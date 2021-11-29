@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PaymentMethod } from 'src/app/models/payment';
 import { FormServiceService } from 'src/app/services/form-service.service';
 
@@ -7,15 +6,16 @@ import { FormServiceService } from 'src/app/services/form-service.service';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent {
   constructor(private readonly formService: FormServiceService) {}
 
   readonly PaymentMethod = PaymentMethod;
 
-  personalDataForm: FormGroup = this.formService.personalData;
-  blikMethod = this.formService.blikMethod;
-  creditCardMethod = this.formService.cardMethod;
-  paypalMethod = this.formService.paypalMethod;
-  paymentMethodSelect = this.formService.method;
+  readonly personalDataForm = this.formService.personalData;
+  readonly blikMethod = this.formService.blikMethod;
+  readonly creditCardMethod = this.formService.cardMethod;
+  readonly paypalMethod = this.formService.paypalMethod;
+  readonly paymentMethodSelect = this.formService.method;
 }

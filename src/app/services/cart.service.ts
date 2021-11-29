@@ -115,9 +115,7 @@ export class CartService {
   hideContent(product: ProductInShop) {
     product.hide = !product.hide;
   }
-  clearHide() {
-    this.productListInCart.value.map((products) => (products.hide = false));
-  }
+
   sortByOrder() {
     this.productListInCart.value.sort((a, b) => a.orderNumber - b.orderNumber);
   }

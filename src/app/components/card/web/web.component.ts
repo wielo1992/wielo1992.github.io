@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { filter, tap } from 'rxjs/operators';
 import { ProductInShop } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart.service';
+import { DialogCardComponent } from '../dialog-card/dialog-card.component';
 
 @Component({
   selector: 'app-web',
   templateUrl: './web.component.html',
   styleUrls: ['./web.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WebComponent {
-  constructor(private cartService: CartService) {}
+  constructor(
+    private readonly cartService: CartService,
+    private readonly dialog: MatDialog
+  ) {}
 
-  productsInCart$ = this.cartService.productListinCart$;
-  totalPrice$ = this.cartService.totalPrice$;
+  readonly productsInCart$ = this.cartService.productListinCart$;
+  readonly totalPrice$ = this.cartService.totalPrice$;
 
-  displayedColumns = [
+  readonly displayedColumns = [
     'No.',
     'Image',
     'Name',
@@ -25,10 +32,17 @@ export class WebComponent {
   ];
 
   clearAll() {
-    if (confirm('Are You sure to clear cart?')) {
-      this.cartService.removeAllProducts();
-    }
+    const dialogRef = this.dialog.open(DialogCardComponent);
+
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((result) => !!result),
+        tap(() => this.cartService.removeAllProducts())
+      )
+      .subscribe();
   }
+
   addQuantity(product: ProductInShop) {
     this.cartService.addQuantity(product);
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductInShop } from 'src/app/models/product-model';
@@ -10,17 +10,18 @@ import { FilterService } from 'src/app/services/filter.service';
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
   styleUrls: ['./list-products.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListProductsComponent {
   constructor(
-    private http: ApiService,
-    private cartService: CartService,
-    private filter: FilterService
+    private readonly http: ApiService,
+    private readonly cartService: CartService,
+    private readonly filter: FilterService
   ) {}
 
-  public listOfProducts$ = this.http.productList$;
+  readonly listOfProducts$ = this.http.productList$;
 
-  filteredProducts$: Observable<ProductInShop[]> = combineLatest([
+  readonly filteredProducts$: Observable<ProductInShop[]> = combineLatest([
     this.listOfProducts$,
     this.filter.valueChangesListener(),
   ]).pipe(
