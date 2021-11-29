@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, tap } from 'rxjs/operators';
 import { ProductInShop } from 'src/app/models/product-model';
@@ -11,7 +11,7 @@ import { DialogCardComponent } from '../dialog-card/dialog-card.component';
   styleUrls: ['./mobile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MobileComponent {
+export class MobileComponent implements OnInit {
   constructor(
     private readonly cartService: CartService,
     private readonly dialog: MatDialog
@@ -39,5 +39,8 @@ export class MobileComponent {
   }
   reduceQuantity(product: ProductInShop) {
     this.cartService.reduceQuantity(product);
+  }
+  ngOnInit() {
+    this.cartService.summPrice();
   }
 }

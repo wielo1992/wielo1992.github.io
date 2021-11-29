@@ -7,13 +7,7 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class CartService {
-  public productListInCart = new BehaviorSubject<ProductInShop[]>([]);
-  public productListinCart$ = this.productListInCart.asObservable();
-  public totalPrice: number = 0;
-  public totalPriceB = new BehaviorSubject<number>(this.totalPrice);
-  public totalPrice$ = this.totalPriceB.asObservable();
-
-  constructor(private localStorage: LocalStorageService) {
+  constructor(private readonly localStorage: LocalStorageService) {
     this.loadCart();
     this.productListinCart$.subscribe((data) =>
       this.localStorage.addToLocalStorage(data)
@@ -21,10 +15,11 @@ export class CartService {
     this.summPrice();
     this.sortByOrder();
   }
+  private readonly productListInCart = new BehaviorSubject<ProductInShop[]>([]);
+  readonly productListinCart$ = this.productListInCart.asObservable();
 
-  loadCart() {
-    this.productListInCart.next(this.localStorage.getFromLocalStorage());
-  }
+  private readonly totalPrice = new BehaviorSubject<number>(0);
+  readonly totalPrice$ = this.totalPrice.asObservable();
 
   addProduct(product: ProductInShop) {
     const productInCart = this.productListInCart.value.find(
@@ -110,13 +105,13 @@ export class CartService {
     const priceSummary = this.productListInCart.value.reduce((acc, val) => {
       return acc + val.priceAfterSummary;
     }, 0);
-    this.totalPriceB.next(priceSummary);
-  }
-  hideContent(product: ProductInShop) {
-    product.hide = !product.hide;
+    this.totalPrice.next(priceSummary);
   }
 
-  sortByOrder() {
+  private sortByOrder() {
     this.productListInCart.value.sort((a, b) => a.orderNumber - b.orderNumber);
+  }
+  private loadCart() {
+    this.productListInCart.next(this.localStorage.getFromLocalStorage());
   }
 }

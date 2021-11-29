@@ -21,6 +21,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
+    this.cartService.summPrice();
   }
   @HostListener('window:resize') trackResolution() {
     this.innerWidth = window.innerWidth;

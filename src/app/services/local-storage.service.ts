@@ -5,8 +5,6 @@ import { ProductInShop } from '../models/product-model';
   providedIn: 'root',
 })
 export class LocalStorageService {
-  constructor() {}
-
   addToLocalStorage(data: ProductInShop[]) {
     localStorage.setItem('cardItems', JSON.stringify(data));
   }

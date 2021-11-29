@@ -8,9 +8,13 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class FormServiceService {
-  constructor(private fb: FormBuilder, private apiService: ApiService) {}
-  confirmationData = new BehaviorSubject<Payment>(null);
-  confirmationData$ = this.confirmationData.asObservable();
+  constructor(
+    private readonly fb: FormBuilder,
+    private apiService: ApiService
+  ) {}
+
+  private readonly confirmationData = new BehaviorSubject<Payment>(null);
+  readonly confirmationData$ = this.confirmationData.asObservable();
 
   readonly paymentMethods = ['Credit Card', 'BLIK', 'PayPal'];
 
