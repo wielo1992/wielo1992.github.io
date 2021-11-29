@@ -1,0 +1,20 @@
+<form [formGroup]="paypalMethod">
+  <mat-form-field appearance="fill">
+    <mat-label>password</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      placeholder="Password"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>email</mat-label>
+    <input matInput formControlName="email" placeholder="E-mail" required />
+  </mat-form-field>
+  <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>

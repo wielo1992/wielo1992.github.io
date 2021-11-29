@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductInShop } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -7,7 +7,7 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './mobile.component.html',
   styleUrls: ['./mobile.component.scss'],
 })
-export class MobileComponent implements OnInit {
+export class MobileComponent {
   constructor(private readonly cartService: CartService) {}
 
   productsInCart$ = this.cartService.productListinCart$;
@@ -27,6 +27,4 @@ export class MobileComponent implements OnInit {
   reduceQuantity(product: ProductInShop) {
     this.cartService.reduceQuantity(product);
   }
-
-  ngOnInit(): void {}
 }

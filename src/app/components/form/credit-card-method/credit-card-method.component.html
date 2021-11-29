@@ -1,0 +1,32 @@
+<form [formGroup]="creditCardMethod">
+  <mat-form-field appearance="fill">
+    <mat-label>Card Number</mat-label>
+    <input
+      matInput
+      formControlName="cardNumber"
+      placeholder="Card Number"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Date of Expire</mat-label>
+    <input
+      matInput
+      formControlName="expiredDate"
+      placeholder="Date of Expire"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Secure Number</mat-label>
+    <input
+      matInput
+      formControlName="secureNumber"
+      placeholder="Secure Number"
+      required
+    />
+  </mat-form-field>
+  <div>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>

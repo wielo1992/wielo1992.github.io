@@ -1,0 +1,14 @@
+<form [formGroup]="paymentMethodSelect">
+  <mat-form-field appearance="fill">
+    <mat-label>Method</mat-label>
+    <mat-select formControlName="method">
+      <mat-option *ngFor="let method of paymentMethodsArray" [value]="method">
+        {{ method }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>
