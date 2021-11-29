@@ -13,7 +13,6 @@ export class CartService {
       this.localStorage.addToLocalStorage(data)
     );
     this.summPrice();
-    this.sortByOrder();
   }
   private readonly productListInCart = new BehaviorSubject<ProductInShop[]>([]);
   readonly productListinCart$ = this.productListInCart.asObservable();
@@ -82,8 +81,10 @@ export class CartService {
         priceAfterSummary: product.priceAfterSummary + product.price,
       },
     ]);
+    this.productListInCart.next(
+      this.productListInCart.value.sort((a, b) => a.orderNumber - b.orderNumber)
+    );
     this.summPrice();
-    this.sortByOrder();
   }
   reduceQuantity(product: ProductInShop) {
     product.quantity === 1
@@ -98,8 +99,10 @@ export class CartService {
             priceAfterSummary: product.priceAfterSummary - product.price,
           },
         ]);
+    this.productListInCart.next(
+      this.productListInCart.value.sort((a, b) => a.orderNumber - b.orderNumber)
+    );
     this.summPrice();
-    this.sortByOrder();
   }
   summPrice() {
     const priceSummary = this.productListInCart.value.reduce((acc, val) => {
