@@ -1,5 +1,22 @@
 # Shop
 
+<h3>Description</h3>
+
+<h4>In this project</h4>
+<ul>
+<li>I used REST-Api requests to get products from fakestoreAPI and also to post customer data in google/firebase</li>
+<li><p>I divided aplication for multipiple components to make this shop easier to work with and read</li>
+ <li>I used RxJS to make this aplication less static and to provide best expierience for the user while using the store </p></li>
+<li>I used a lot of services to keep logic outside the components and make it easier to communicate between them</li>
+<li>I make use of Local Storage to deliver to the customer best web shoping-ish experience</li>
+<li>And many others smaller features that You can find during using the shop!</li>
+
+<h3>Live Version</h3>
+https://wielo1992.github.io/
+  </ul
+  
+  <hr>
+  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 
 ## Development server
