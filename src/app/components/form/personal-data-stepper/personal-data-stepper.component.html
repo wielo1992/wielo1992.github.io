@@ -19,7 +19,7 @@
       required
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <!-- <mat-form-field appearance="fill">
     <mat-label>Birthday</mat-label>
     <input
       matInput
@@ -27,6 +27,13 @@
       placeholder="Birthday"
       required
     />
+  </mat-form-field> -->
+
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <hr />

@@ -21,7 +21,7 @@ export class FormServiceService {
   readonly personalData = this.fb.group({
     name: ['', Validators.required],
     surname: ['', Validators.required],
-    phoneNumber: ['', Validators.required],
+    phoneNumber: ['', [Validators.required, Validators.maxLength(6)]],
     dateOfBirth: ['', Validators.required],
     country: ['', Validators.required],
     city: ['', Validators.required],
