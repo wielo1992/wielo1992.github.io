@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { FormServiceService } from 'src/app/services/form-service.service';
 
 @Component({
@@ -10,5 +9,5 @@ import { FormServiceService } from 'src/app/services/form-service.service';
 })
 export class PersonalDataStepperComponent {
   constructor(private readonly formService: FormServiceService) {}
-  readonly personalDataForm: FormGroup = this.formService.personalData;
+  readonly personalDataForm = this.formService.personalData;
 }

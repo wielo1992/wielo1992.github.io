@@ -31,7 +31,54 @@
       </ng-container>
       <mat-step>
         <ng-template matStepLabel>Submit</ng-template>
-        <app-summary></app-summary>
+        <h3>Personal Data</h3>
+        <p>
+          Name:
+          <b>{{ personalDataForm.controls["name"].value }} </b>
+        </p>
+        <p>
+          Surname: <b> {{ personalDataForm.controls["surname"].value }}</b>
+        </p>
+        <p>
+          Phone Number:
+          <b>{{ personalDataForm.controls["phoneNumber"].value }}</b>
+        </p>
+        <p>
+          Date of Birt:
+          <b> {{ personalDataForm.controls["dateOfBirth"].value }}</b>
+        </p>
+        <hr />
+        <h3>Adress Details</h3>
+        <p>
+          Country: <b> {{ personalDataForm.controls["country"].value }} </b>
+        </p>
+        <p>
+          City: <b> {{ personalDataForm.controls["city"].value }} </b>
+        </p>
+        <p>
+          Street: <b>{{ personalDataForm.controls["street"].value }}</b>
+        </p>
+        <p>
+          Home Number: <b>{{ personalDataForm.controls["homeNuber"].value }}</b>
+        </p>
+        <hr />
+        <h3>Payment Method</h3>
+        <p>
+          <b>{{ paymentMethodSelect.controls["method"].value }}</b>
+        </p>
+        <hr />
+        <h4>Total Price:</h4>
+        <p>
+          <b>{{ totalPrice$ | async | number }}$ </b>
+        </p>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+
+          <button mat-button matStepperNext (click)="finishPaymentForm()">
+            Submit
+          </button>
+        </div>
       </mat-step>
     </mat-stepper>
   </mat-card>

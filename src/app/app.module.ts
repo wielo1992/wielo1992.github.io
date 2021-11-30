@@ -23,23 +23,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing-module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
+import { DialogCardComponent } from './components/card/dialog-card/dialog-card.component';
 import { EmptyCartComponent } from './components/card/empty-cart/empty-cart.component';
 import { MobileComponent } from './components/card/mobile/mobile.component';
 import { WebComponent } from './components/card/web/web.component';
 import { BlikMethodComponent } from './components/form/blik-method/blik-method.component';
 import { CreditCardMethodComponent } from './components/form/credit-card-method/credit-card-method.component';
+import { DialogComponent } from './components/form/dialog/dialog.component';
 import { FormComponent } from './components/form/form.component';
 import { MethodDataStepperComponent } from './components/form/method-data-stepper/method-data-stepper.component';
 import { PaypalMethodComponent } from './components/form/paypal-method/paypal-method.component';
 import { PersonalDataStepperComponent } from './components/form/personal-data-stepper/personal-data-stepper.component';
-import { SummaryComponent } from './components/form/summary/summary.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListProductsComponent } from './components/products/list-products/list-products.component';
 import { ProductsComponent } from './components/products/products.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
-import { DialogComponent } from './components/form/dialog/dialog.component';
-import { DialogCardComponent } from './components/card/dialog-card/dialog-card.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +58,7 @@ import { DialogCardComponent } from './components/card/dialog-card/dialog-card.c
     PaypalMethodComponent,
     BlikMethodComponent,
     CreditCardMethodComponent,
-    SummaryComponent,
+
     DialogComponent,
     DialogCardComponent,
   ],
