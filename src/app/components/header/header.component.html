@@ -1,54 +1,58 @@
-<mat-toolbar>
-  <div class="nav-left">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon (click)="sideNavOpen()">menu</mat-icon>
-    </button>
+<div class="container-fluid">
+  <mat-toolbar>
+    <div class="nav-left">
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+      >
+        <mat-icon (click)="sideNavOpen()">menu</mat-icon>
+      </button>
 
-    <span
-      ><img
-        class="store"
-        src="https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/000/741/original/online-shop.png"
-        alt=""
-    /></span>
-  </div>
+      <span
+        ><img
+          style="cursor: pointer"
+          class="store"
+          src="https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/000/741/original/online-shop.png"
+          alt=""
+          routerLink="/"
+      /></span>
+    </div>
 
-  <div class="search">
-    <mat-form-field class="example-form-field" appearance="fill">
-      <mat-label>Search for product</mat-label>
+    <div class="search">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Search for product</mat-label>
 
-      <input matInput type="text" [formControl]="ctrlSearch" />
-    </mat-form-field>
-  </div>
-  <div class="nav-right">
-    <span
-      class="menu"
-      style="cursor: pointer"
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >Home</span
-    >
-    <span
-      class="menu"
-      style="cursor: pointer"
-      routerLink="/products/list-products"
-      routerLinkActive="active"
-      >Products</span
-    >
+        <input matInput type="text" [formControl]="ctrlSearch" />
+      </mat-form-field>
+    </div>
+    <div class="nav-right">
+      <span
+        class="menu"
+        style="cursor: pointer"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</span
+      >
+      <span
+        class="menu"
+        style="cursor: pointer"
+        routerLink="/products/list-products"
+        routerLinkActive="active"
+        >Products</span
+      >
 
-    <mat-icon
-      routerLink="/shopping-card"
-      matBadge="{{ productListLength$ | async }}"
-      matBadgeColor="warn"
-      style="cursor: pointer; margin-right: 20px"
-    >
-      local_grocery_store</mat-icon
-    >
+      <mat-icon
+        routerLink="/shopping-card"
+        matBadge="{{ productListLength$ | async }}"
+        matBadgeColor="warn"
+        style="cursor: pointer; margin-right: 20px"
+      >
+        local_grocery_store</mat-icon
+      >
 
-    <span class="cdk-visually-hidden"> </span>
-  </div>
-</mat-toolbar>
+      <span class="cdk-visually-hidden"> </span>
+    </div>
+  </mat-toolbar>
+</div>
