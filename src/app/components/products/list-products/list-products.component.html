@@ -4,7 +4,7 @@
       <img src="{{ item.image }}" alt="" />
       <p class="title">{{ item.title | slice: 0:20 }}...</p>
       <p class="description">{{ item.description | slice: 0:100 }}...</p>
-      <p class="price">{{ item.price }} $</p>
+      <p class="price">{{ item.price | number: "1.2-2" }} $</p>
 
       <button mat-button (click)="addToCart(item)">ADD TO CART</button>
     </div>
