@@ -36,7 +36,7 @@ export class FormServiceService {
   readonly blikMethod = this.fb.group({
     blikCode: ['', Validators.required],
     secureNumber: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
   });
   readonly cardMethod = this.fb.group({
     cardNumber: ['', Validators.required],
@@ -44,7 +44,7 @@ export class FormServiceService {
     secureNumber: ['', Validators.required],
   });
   readonly paypalMethod = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 

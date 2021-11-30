@@ -24,14 +24,14 @@
   <ng-container matColumnDef="Price">
     <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.price | number }}
+      {{ element.price | number: "1.2-2" }} $
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="PriceTotal">
     <mat-header-cell *matHeaderCellDef> Price total </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.priceAfterSummary | number }}
+      {{ element.priceAfterSummary | number: "1.2-2" }} $
     </mat-cell>
   </ng-container>
 
@@ -66,7 +66,7 @@
 </mat-table>
 <mat-card class="summary"
   ><p>
-    Total : <b>{{ totalPrice$ | async | number }} $</b>
+    Total : <b>{{ totalPrice$ | async | number: "1.2-2" }} $</b>
   </p>
   <div class="actions">
     <div

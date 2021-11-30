@@ -32,7 +32,7 @@
         >
       </div>
       <p>
-        <b>{{ product.priceAfterSummary | number }} $</b>
+        <b>{{ product.priceAfterSummary | number: "1.2-2" }} $</b>
       </p>
     </div>
   </div>
@@ -40,7 +40,7 @@
     <h3>Total price</h3>
 
     <p>
-      <b>{{ totalPrice$ | async | number }} $</b>
+      <b>{{ totalPrice$ | async | number: "1.2-2" }} $</b>
     </p>
   </div>
 
